@@ -4,6 +4,8 @@ import random
 #List of available options
 available_countries =["Turkey", "Greece", "Lebanon", "Spain", "Portugal"]
 available_options = ["1", "2", "3", "4", "5"]
+available_meal = ["Regular", "Vegetarian", "Kosher"]
+available_yes_no = ["yes", "y", "YES", "no", "n", "NO"]
 
 #Define a function to check if the username and password are correct
 def verify_log_in(username, password):
@@ -85,3 +87,24 @@ def boarding_times_menu(list_boarding_times):
     for i in range(4):
         print(f"{i+1}- {list_boarding_times[i]}")
     print()
+
+#Menu - Economic vs First Class
+menu_class = """
+      Feature      |   Economy class   |   First Class
+-----------------------------------------------------------
+  Seat space and   |  Narrower seats,  |   wider seats,
+     comfort       |  limited legroom  |   more legroom
+ -----------------------------------------------------------
+    Additional     |  Basic services   |   Access to VIP
+    services       |                   | lounges, priority
+                   |                   |     boarding
+"""
+
+#menu to add suitcase
+suitcase_extra ="""
+Notes: 
+* Hand luggage is free of charge.
+* There is a $20.00 charge for additional luggage.
+"""
+
+
