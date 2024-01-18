@@ -168,6 +168,18 @@ def flight_food(menu, options_meal):
     flight_meal = options_meal[index]
     return flight_meal
 
+#Funcion para recoger datos del usuario
+def user_data():
+    list_user = []
+    name = input("What is your name?: ")
+    last_name = input("What is your last name?: ")
+    number_id = input("What is your ID or Passport number?: ")
+    list_user.append(name)
+    list_user.append(last_name)
+    list_user.append(number_id)
+    return list_user
+
+
 #Menu - Economic vs First Class
 menu_class = """
             Feature      | Economy class (1) |   First Class (2)
@@ -238,6 +250,45 @@ def message_custom(sentence):
     print("Thank you")
     print("Come back soon\n")
 
+#Final message
+def final_summary(country_1, country_2, date_1, date_2, list_chosen, list_cost, list_user):
+    summary_final = f"""
+    ****************    Final Summary    *********************
+        
+        {country_1}   --->   {country_2}              |      {date_1} 
+
+        Class:      {list_chosen[0]}
+        Luggage:    {list_chosen[2]}
+        Food:       {list_chosen[1]}
+        Cost:       {list_cost[0]}
+    
+    ----------------------------------------------------------
+    
+        {country_1}   --->   {country_2}              |      {date_2} 
+
+        Class:      {list_chosen[3]}
+        Luggage:    {list_chosen[5]}
+        Food:       {list_chosen[4]}
+        Cost:       {list_cost[1]}
+
+    ----------------------------------------------------------
+
+                    Personal Information
+    
+        Name:       {list_user[0]}
+        Last name:  {list_user[1]}
+        ID/Passport:{list_user[2]}
+
+    ----------------------------------------------------------
+
+    Total Cost =    {list_cost[0]+ list_cost[1]}
+
+    **********************************************************
+    
+    """
+    print(summary_final)
+    
+
 def initial_summary(number, country_1, country_2, date_1, date_2):
     if number == 0:
         summary_start = f"""
@@ -263,30 +314,43 @@ def main():
         print("****************    Login Successfully   ********************")
         reset_main_menu = True
         while reset_main_menu == True:
+            print("\n**************************************************************\n")
             available_countries = ["Turkey", "Greece", "Lebanon", "Spain", "Portugal"]
             origin_country, destin_country = country_origin_destination(menu_countries, available_countries)
             date_departure, date_return = date_dpt_rtn()
             list_cost_in_out = []
-            
+            list_chosen_options = []
             for i in range(2):
                 total_cost = 0
                 initial_summary(i, origin_country, destin_country, date_departure, date_return)
                 class_option, cost_flight = flight_class(menu_class)
                 cost_luggage, amount_luggage = extra_luggage(menu_luggage)
                 favourite_food = flight_food(menu_food, available_meal)
+                print()
                 total_cost = cost_flight + cost_luggage
                 list_cost_in_out.append(total_cost)
-            
-            print("Summary")
-            quieres_comprarlo = input("question")
-            if quieres_comprarlo == True:
-                print("compra exitosa")
-            else:
-                salir = input("deseas volver al menu princia¿pal o salir del programa")
-                if salir == True:
-                    print("Adios")
+                list_chosen_options.append(class_option)
+                list_chosen_options.append(favourite_food)
+                if amount_luggage == 0:
+                    list_chosen_options.append("Only hand luggage")
                 else:
+                    luggage_message = "Hand luggage + " + str(amount_luggage) + " extra pieces of luggage"
+                    list_chosen_options.append(luggage_message)
+            print("\nPersonal Information\n")
+            list_user_data = user_data()
+            final_summary(origin_country, destin_country, date_departure, date_return, list_chosen_options, list_cost_in_out, list_user_data)
+            buy_flight = check_answer("\nDo you want to buy the plane ticket?(y/n): ", available_yes_no)
+            if buy_flight in available_yes_no[0:3]:
+                message_custom("\nSuccessful purchase")
+                reset_main_menu = False
+            else:
+                exit_program = check_answer("\nDo you want to exit the program?(y/n): ", available_yes_no)
+                if exit_program == True:
+                    message_custom("")
                     reset_main_menu = False
+                else:
+                    print("\nLet's start again..!!!!\n")
+                    reset_main_menu = True
     else:
         message_custom("Maximum number of attempts")
 
