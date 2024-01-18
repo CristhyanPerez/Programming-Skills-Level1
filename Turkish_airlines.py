@@ -6,6 +6,7 @@ from datetime import datetime
 available_options = ["1", "2", "3", "4", "5"]
 available_meal = ["Regular", "Vegetarian", "Kosher"]
 available_yes_no = ["yes", "y", "YES", "no", "n", "NO"]
+available_countries = ["Turkey", "Greece", "Lebanon", "Spain", "Portugal"]
 
 #Define a function to check if the username and password are correct
 def verify_log_in(username, password):
@@ -51,16 +52,21 @@ def country_origin_destination(menu, available_countries):
     print(menu)
     origin_country = check_answer("\nChoose the country of origin (1-5): ", available_options)
     index_in_country = int(origin_country) - 1
-    #Ensure that the country of origin is an option
-    available_options.pop(index_in_country)
     #With the index we access the country
     origin_country = available_countries[index_in_country]
-    dtn_country = check_answer("\nChoose the country of destination (1-5): ", available_options)
-    index_out_country = int(dtn_country) - 1
-    dtn_country = available_countries[index_out_country]
+    #Ensure that the country of origin is an option
+    reset = True
+    while reset == True:
+        dtn_country = check_answer("\nChoose the country of destination (1-5): ", available_options)
+        index_out_country = int(dtn_country) - 1
+        if index_in_country == index_out_country:
+            print("Wrong option. Let's go again")
+            reset = True
+        else:
+            dtn_country = available_countries[index_out_country]
+            reset = False
     #To return both countries as string
     return origin_country, dtn_country
-#Error en cuanto queramos ejecutar el código dos veces
 
 #Function to verify the existence of a date of 2024
 def existence_date(date_str):
@@ -168,7 +174,7 @@ def flight_food(menu, options_meal):
     flight_meal = options_meal[index]
     return flight_meal
 
-#Funcion para recoger datos del usuario
+#Funtion to collect user data
 def user_data():
     list_user = []
     name = input("What is your name?: ")
@@ -179,78 +185,24 @@ def user_data():
     list_user.append(number_id)
     return list_user
 
+#Function to print the initial summary of each flight
+def initial_summary(number, country_1, country_2, date_1, date_2):
+    if number == 0:
+        summary_start = f"""
+        ****************    Outbound Flight    *********************
+        
+        {country_1}   --->   {country_2}              |      {date_1}      
+        """
+    else:
+        summary_start = f"""
 
-#Menu - Economic vs First Class
-menu_class = """
-            Feature      | Economy class (1) |   First Class (2)
-        -----------------------------------------------------------
-        Seat space and   |  Narrower seats,  |   wider seats,
-           comfort       |  limited legroom  |   more legroom
-        -----------------------------------------------------------
-          Additional     |  Basic services   |   Access to VIP
-          services       |                   | lounges, priority
-                         |                   |     boarding
-        -----------------------------------------------------------
-           Cost ($)      |        200        |        250     
-        -----------------------------------------------------------
-"""
+        ****************    Return Flight    *********************
+        
+        {country_2}   --->   {country_1}              |      {date_2}     
+        """
+    print(summary_start)
 
-#menu to add suitcase
-menu_luggage ="""
-Notes: 
-* Hand luggage is free of charge.
-* There is a $20.00 charge for additional luggage.
-"""
-
-#Menu food
-menu_food = """
-Type of food available:
-
-1 |  Regular
-2 |  Vegetarian
-3 |  Kosher
-"""
-
-#Initial menu message
-menu_entry = """
-****************    Turkish Airlines    *********************
-
-Welcome, first, you have to log in.
-
-* The password is made up of the following:
-  Username + space + number of characteres in the user word
-
-Example:
-Username: Cris
-Password: Cris 4
-
-Remember that you only have three attempts
-"""
-
-#Main menu
-menu_countries ="""
-This airline has operations in the
-following countries:
-
-1- Turkey
-2- Grecce
-3- Lebanon
-4- Spain
-5- Portugal
-
-* Notes:
- - The destination country must be different than the origin country
- - We only have flights available for this 2024. The date must be
-   entered with the following format: 01-09-24"""
-
-#Message to exit the program
-def message_custom(sentence):
-    print()
-    print(sentence)
-    print("Thank you")
-    print("Come back soon\n")
-
-#Final message
+#Function to print the final summary of the two flights and personal information
 def final_summary(country_1, country_2, date_1, date_2, list_chosen, list_cost, list_user):
     summary_final = f"""
     ****************    Final Summary    *********************
@@ -287,26 +239,80 @@ def final_summary(country_1, country_2, date_1, date_2, list_chosen, list_cost, 
     
     """
     print(summary_final)
-    
 
-def initial_summary(number, country_1, country_2, date_1, date_2):
-    if number == 0:
-        summary_start = f"""
-        ****************    Outbound Flight    *********************
-        
-        {country_1}   --->   {country_2}              |      {date_1}      
-        """
-    else:
-        summary_start = f"""
+#Message to exit the program
+def message_custom(sentence):
+    print()
+    print(sentence)
+    print("Thank you")
+    print("Come back soon\n")
 
-        ****************    Return Flight    *********************
-        
-        {country_2}   --->   {country_1}              |      {date_2}     
-        """
-    print(summary_start)
+#Menus
+#Program entry menu
+menu_entry = """
+****************    Turkish Airlines    *********************
 
-#Estructura principal
-#Definir el login
+Welcome, first, you have to log in.
+
+* The password is made up of the following:
+  Username + space + number of characteres in the user word
+
+Example:
+Username: Cristhyan
+Password: Cristhyan 9
+
+Remember that you only have three attempts
+"""
+
+#Show available countries
+menu_countries ="""
+This airline has operations in the
+following countries:
+
+1- Turkey
+2- Grecce
+3- Lebanon
+4- Spain
+5- Portugal
+
+* Notes:
+ - The destination country must be different than the origin country
+ - We only have flights available for this 2024. The date must be
+   entered with the following format: 01-09-24
+"""
+
+#Menu - Economic vs First Class
+menu_class = """
+            Feature      | Economy class (1) |   First Class (2)
+        -----------------------------------------------------------
+        Seat space and   |  Narrower seats,  |   wider seats,
+           comfort       |  limited legroom  |   more legroom
+        -----------------------------------------------------------
+          Additional     |  Basic services   |   Access to VIP
+          services       |                   | lounges, priority
+                         |                   |     boarding
+        -----------------------------------------------------------
+           Cost ($)      |        200        |        250     
+        -----------------------------------------------------------
+"""
+
+#menu to add suitcase
+menu_luggage ="""
+Notes: 
+* Hand luggage is free of charge.
+* There is a $20.00 charge for additional luggage.
+"""
+
+#Menu food Regular - Vegetarian - Kosher
+menu_food = """
+Type of food available:
+
+1 |  Regular
+2 |  Vegetarian
+3 |  Kosher
+"""
+
+#Main Function
 def main():
     print(menu_entry)
     login = login_attempts(3)
@@ -315,7 +321,6 @@ def main():
         reset_main_menu = True
         while reset_main_menu == True:
             print("\n**************************************************************\n")
-            available_countries = ["Turkey", "Greece", "Lebanon", "Spain", "Portugal"]
             origin_country, destin_country = country_origin_destination(menu_countries, available_countries)
             date_departure, date_return = date_dpt_rtn()
             list_cost_in_out = []
@@ -354,40 +359,6 @@ def main():
     else:
         message_custom("Maximum number of attempts")
 
+#Entry point
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
