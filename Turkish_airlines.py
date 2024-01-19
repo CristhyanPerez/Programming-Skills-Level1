@@ -350,7 +350,7 @@ def main():
                 reset_main_menu = False
             else:
                 exit_program = check_answer("\nDo you want to exit the program?(y/n): ", available_yes_no)
-                if exit_program == True:
+                if exit_program in available_yes_no[0:3]:
                     message_custom("")
                     reset_main_menu = False
                 else:
