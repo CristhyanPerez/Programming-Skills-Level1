@@ -145,3 +145,91 @@ def date_loop(sentence):
         else:
             print("Retry..!!!\n")
 
+#Function to show the number of available rooms
+def show_rooms_available(type_rooms, list_rooms_available, new_list_options):
+    print("\nAvailability rooms:\n")
+    for i in range(5):
+        if list_rooms_available[i] == 0:
+            message = "There aren't rooms available"
+        elif list_rooms_available[i] == 1:
+            message = "There is a room available"
+            option = str(i + 1)
+            new_list_options.append(option)
+        else:
+            message = "There are " + str(list_rooms_available[i]) + " rooms available"
+            option = str(i + 1)
+            new_list_options.append(option)
+        print(f"{i + 1}- {type_rooms[i]}:  {message}")
+    print()
+    return new_list_options
+
+#Function that receives a list and returns True if at least one of its elements is non-zero
+def list_non_zero(number_list):
+    elements = len(number_list)
+    count = 0
+    for i in range(elements):
+        if number_list[i] != 0:
+            count = count + 1
+    if count ==  0:
+        return False
+    else:
+        return True
+
+#Function to create list from a number
+def create_list_number(number):
+    list_number_string = []
+    for i in range(1, number + 1):
+        element = str(i)
+        list_number_string.append(element)
+    return list_number_string
+
+#Function to choose rooms
+def hotel_rooms(type_rooms, amount_rooms):
+    #We define two variables, the first to evaluate the loop and the second, 
+    #to start the reserved quantity at zero
+    reset = True
+    reserve_quantity = [0, 0, 0, 0, 0]
+    while reset == True:
+        new_options_available = []
+        new_options_available = show_rooms_available(type_rooms, amount_rooms, new_options_available)
+        first_question = "What type of room do you want to reserve? (1-5): "
+        option_room = check_answer(first_question, new_options_available)
+        #Throught this index we will access to change the values in the list of initial
+        #number of rooms and the list of reserved rooms
+        index = int(option_room) - 1
+        number_available = amount_rooms[index]
+        options_amount = create_list_number(number_available)
+        print()
+        second_question = "How many rooms of this type will you reserve?: "
+        chosen_quantity_option = check_answer(second_question, options_amount)
+        chosen_quantity_option = int(chosen_quantity_option)
+        reserve_quantity[index] = reserve_quantity[index] + chosen_quantity_option
+        amount_rooms[index] = amount_rooms[index] - chosen_quantity_option
+        print()
+        #We verify that there are still rooms available to chosen from
+        amount_diferent_zeros = list_non_zero(amount_rooms) 
+        if amount_diferent_zeros == True:
+            third_question = "Do you want to reserve more rooms?(y/n): "
+            more_rooms = check_answer(third_question, available_yes_no)
+            if more_rooms in available_yes_no[0:3]:
+                reset = True
+                print("\nOk. Let's go again.!!!\n")
+            else:
+                reset = False
+        else:
+            print("There aren't rooms available to reserve")
+            reset = False
+    return reserve_quantity, amount_rooms
+
+#Function to store user data
+def user_data():
+    list_user = []
+    print("\nPersonal Information:\n")
+    name = input("What is your name?: ")
+    last_name = input("What is your last name?: ")
+    id = input("What is your ID/passport?: ")
+    list_user.append(name)
+    list_user.append(last_name)
+    list_user.append(id)
+    return list_user
+
