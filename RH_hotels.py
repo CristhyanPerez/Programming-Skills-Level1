@@ -233,3 +233,4 @@ def user_data():
     list_user.append(id)
     return list_user
 
+#Falta el resumen general y también la estructura principal del programa
