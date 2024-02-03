@@ -100,3 +100,73 @@ def option_400():
                 summary_list = option_100()
     return summary_list
 
+#Funtion to show the final summary
+def final_summary(list_travel):
+    summary = f"""
+    ************************************************
+    
+    The best combination for your trips is:
+
+    Country:    {list_travel[2]}
+    Season:     {list_travel[1]}
+    Activities: {list_travel[3]}
+    Budged:     {list_travel[0]}
+
+    ************************************************
+    """
+    print(summary)
+
+#Message to exit the program
+def message_custom(sentence):
+    print()
+    print(sentence)
+    print("Thank you")
+    print("Come back soon\n")
+
+intial_message = """
+****************  Travel Agency  *******************
+
+    Welcome friend,
+    We have a special offer for you. 
+
+"""
+
+#Main Function
+def main():
+    reset_main_menu = True
+    while reset_main_menu == True:
+        print(intial_message)
+        allowed_budget = False
+        while allowed_budget == False:
+            budget_user = float(input("What is your budget? ($100 - $500):  $ "))
+            budget_user = round(budget_user, 2)
+            if budget_user >= 100 and budget_user <= 500:
+                allowed_budget = True
+            else:
+                allowed_budget = False
+                print("Let's go again, enter a valid amount.\n")
+        if budget_user < 200:
+            final_list = option_100()
+        elif budget_user < 300:
+            final_list = option_200()
+        elif budget_user < 400:
+            final_list = option_300()
+        elif budget_user <= 500:
+            final_list = option_400()
+        final_summary(final_list)
+        question_buy = check_answer("\nDo you want to purchase the promotion offered? (y/n): ", available_yes_no)
+        if question_buy in available_yes_no[0:3]:
+            print("\nCongratulations. Enjoy your vacation.\n")
+            reset_main_menu = False
+        else:
+            question_menu = check_answer("\nDo you want to return to the main menu? (y/n): ", available_yes_no)
+            if question_menu in available_yes_no[0:3]:
+                print("\nLet's start again..!!!!\n")
+                reset_main_menu = True
+            else:        
+                message_custom("")
+                reset_main_menu = False
+
+#Entry point
+if __name__ == "__main__":
+    main()
