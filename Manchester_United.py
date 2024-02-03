@@ -3,6 +3,8 @@ import pandas as pd
 
 #Declare list
 jersey_numbers = ["5", "7", "8", "11", "17"]
+options_menu = ["1", "2", "3"]
+available_yes_no = ["y", "yes", "YES", "n", "no", "NO"]
 
 #Declarate the dataframe
 df = pd.DataFrame(columns=["Name", "Goals", "Points Speed", "Points Assists", "Passing accuracy", "Defensive Involving", "Jersey Number"])
@@ -55,7 +57,7 @@ def player_characterics(list_options_jersey):
 def player_compare(list_options_jersey):
     list_available = []
     list_available = list_options_jersey
-    print("Jersey number available to review: 5, 7, 8, 11, 17\n")
+    print("\nJersey number available to review: 5, 7, 8, 11, 17\n")
     #We request the first jersey number to compare
     question_1 = "Choose a jersey number: "
     option_jersey_1 = check_answer(question_1, list_available)
@@ -110,5 +112,48 @@ def players_statistics():
     """
     print(summary)
 
+#Menu
+def menu_start():
+    start = """
+    ****************  Manchester United  *******************
 
+    Welcome friend to your favourite place
+    The program has the following options:
 
+    1- Show the characteristics of a specific player
+    2- Compare two players using the jersey numbers
+    3- Show General statistics
+
+    """
+    print(start)
+
+#Message to exit the program
+def message_custom(sentence):
+    print()
+    print(sentence)
+    print("Thank you")
+    print("Come back soon\n")
+
+#Main Function
+def main():
+    reset_main_menu = True
+    while reset_main_menu == True:
+        menu_start()
+        chosen_option = check_answer("Chose one of the options (1, 2, 3): ", options_menu)
+        if chosen_option == "1":
+            player_characterics(jersey_numbers)
+        elif chosen_option == "2":
+            player_compare(jersey_numbers)
+        elif chosen_option == "3":
+            players_statistics()
+        question_menu = check_answer("\nDo you want to return to the main menu? (y/n): ", available_yes_no)
+        if question_menu in available_yes_no[0:3]:
+            print("\nLet's start again..!!!!\n")
+            reset_main_menu = True
+        else:        
+            message_custom("")
+            reset_main_menu = False
+
+#Entry point
+if __name__ == "__main__":
+    main()
