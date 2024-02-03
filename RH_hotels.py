@@ -233,4 +233,42 @@ def user_data():
     list_user.append(id)
     return list_user
 
-#Falta el resumen general y también la estructura principal del programa
+#Function to print the final summary of the reservations made and personal information
+def final_summary(country, city, date, list_user_data, rooms_reserve):
+    summary_final = f"""
+    ****************    Final Summary    *********************
+
+        Date:       {date}
+        Country:    {country}
+        City:       {city}
+
+    ----------------------------------------------------------
+
+        Reserved rooms:
+    """
+
+    print(summary_final)
+    for i in rooms_reserve:
+        if i != 0:
+            print(f" *{available_rooms[i]}:")
+            print(f"    {rooms_reserve[i]} (cost)")
+            print()
+
+    personal_information_total_cost = f"""
+    ----------------------------------------------------------
+
+                    Personal Information
+    
+        Name:       {list_user_data[0]}
+        Last name:  {list_user_data[1]}
+        ID/Passport:{list_user_data[2]}
+
+    ----------------------------------------------------------
+
+    Total Cost =    costo total
+
+    **********************************************************
+    
+    """
+    print(summary_final)
+
