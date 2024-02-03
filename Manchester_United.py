@@ -89,26 +89,26 @@ def player_compare(list_options_jersey):
 #Function to show the most relevant statistic
 def players_statistics():
     summary = f"""
-    ********************************************
-            
-            General Statistics
+    ****************  General Statistics  *******************
 
-    The fastest player:                   
-        {df.loc[index, 'Name']} 
+        The fastest player:                   
+            {df.loc[df['Points Speed'].idxmax(), 'Name']} ({df.loc[df['Points Speed'].idxmax(), 'Points Speed']}) 
 
-    The top goal scorer:                  
-        {df.loc[index, 'Goals']}
+        The top goal scorer:                  
+            {df.loc[df['Goals'].idxmax(), 'Name']} ({df.loc[df['Goals'].idxmax(), 'Goals']}) 
 
-    The player with the most assists:           
-        {df.loc[index, 'Points Speed']}
+        The player with the most assists:           
+            {df.loc[df['Points Assists'].idxmax(), 'Name']} ({df.loc[df['Points Assists'].idxmax(), 'Points Assists']})
 
-    The player with the highest passing accuracy:         
-        {df.loc[index, 'Points Assists']}
+        The player with the highest passing accuracy:         
+            {df.loc[df['Passing accuracy'].idxmax(), 'Name']} ({df.loc[df['Passing accuracy'].idxmax(), 'Passing accuracy']})
 
-    the player with the most defensive involvements:      
-        {df.loc[index, 'Passing accuracy']}
+        the player with the most defensive involvements:      
+            {df.loc[df['Defensive Involving'].idxmax(), 'Name']} ({df.loc[df['Defensive Involving'].idxmax(), 'Defensive Involving']})
     
-    ********************************************
+    *********************************************************
     """
     print(summary)
-    pass
+
+
+
