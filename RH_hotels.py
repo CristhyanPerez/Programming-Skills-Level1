@@ -280,3 +280,71 @@ def message_custom(sentence):
     print("Thank you")
     print("Come back soon\n")
 
+#Menus
+#Program entry menu
+menu_entry = """
+*****************    RH Hotels Chain    *********************
+
+Welcome, first, you have to log in.
+
+* The password is made up of the following:
+  Username + space + number of characteres in the user word
+
+Example:
+Username: Cristhyan
+Password: Cristhyan 9
+
+Remember that you only have three attempts
+"""
+
+#Show available countries
+menu_countries ="""
+You can reserve rooms in the following countries:
+
+1- Spain
+2- France
+3- Portugal
+4- Italy
+5- Germany
+"""
+
+#Show available cities by country
+spain_cities = """
+You can book in the following cities in Spain:
+
+1- Madrid
+2- Barcelona
+3- Valencia
+"""
+france_cities = """
+You can book in the following cities in France:
+
+1- Paris
+2- Marseille
+"""
+portugal_cities = """
+You can book in the following cities in Portugal:
+
+1- Madeira
+2- Lisbon
+3- Porto
+"""
+italy_cities = """
+You can book in the following cities in Italy:
+
+1- Rome
+2- Milan
+"""
+germany_cities = """
+You can book in the following cities in Germany:
+
+1- Munich
+2- Berlin
+"""
+
+note = """
+* Note:
+ - We can only reserve for this 2024. The date must be
+   entered with the following format: 01-09-24
+"""
+
