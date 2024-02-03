@@ -219,7 +219,7 @@ def hotel_rooms(type_rooms, amount_rooms):
         else:
             print("There aren't rooms available to reserve")
             reset = False
-    return reserve_quantity, amount_rooms
+    return reserve_quantity
 
 #Function to store user data
 def user_data():
@@ -234,7 +234,12 @@ def user_data():
     return list_user
 
 #Function to print the final summary of the reservations made and personal information
-def final_summary(country, city, date, list_user_data, rooms_reserve):
+def final_summary(country, city, date, list_user_data, list_type_rooms, list_rooms_reserve, cost):
+    #Loop to calculate total cost
+    count = 0
+    for i in range(0, 5):
+        count = count + cost[i]*list_rooms_reserve[i]
+    #First part of the final message, general information
     summary_final = f"""
     ****************    Final Summary    *********************
 
@@ -242,22 +247,19 @@ def final_summary(country, city, date, list_user_data, rooms_reserve):
         Country:    {country}
         City:       {city}
 
-    ----------------------------------------------------------
-
-        Reserved rooms:
+    ---------------     Reserved rooms    -------------------- 
     """
-
+    #Second part. Information on reserved rooms
     print(summary_final)
-    for i in rooms_reserve:
+    j = 0
+    for i in list_rooms_reserve:
         if i != 0:
-            print(f" *{available_rooms[i]}:")
-            print(f"    {rooms_reserve[i]} (cost)")
+            print(f"         *{list_type_rooms[j]}:     {list_rooms_reserve[j]} rooms ($ {cost[j] * list_rooms_reserve[j]}.00)")
             print()
-
-    personal_information_total_cost = f"""
-    ----------------------------------------------------------
-
-                    Personal Information
+        j = j + 1
+    #Third part. Personal information and total cost of reserve
+    personal_information = f"""
+    ---------------   Personal Information    ----------------
     
         Name:       {list_user_data[0]}
         Last name:  {list_user_data[1]}
@@ -265,10 +267,16 @@ def final_summary(country, city, date, list_user_data, rooms_reserve):
 
     ----------------------------------------------------------
 
-    Total Cost =    costo total
+    Total Cost =    {count}
 
     **********************************************************
-    
     """
-    print(summary_final)
+    print(personal_information)
+
+#Message to exit the program
+def message_custom(sentence):
+    print()
+    print(sentence)
+    print("Thank you")
+    print("Come back soon\n")
 
