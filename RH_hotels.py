@@ -11,7 +11,6 @@ available_cities_italy = ["Rome", "Milan"]
 available_cities_germany = ["Munich", "Berlin"]
 available_yes_no = ["yes", "y", "YES", "no", "n", "NO"]
 available_rooms = ["VIP Suits", "Single rooms", "Double rooms", "Group rooms", "Luxury suits"]
-initial_amount = [6, 3, 6, 6, 3]
 initial_cost = [450, 100, 200, 350, 550]
 
 #Define a function to check if the username and password are correct
@@ -54,7 +53,8 @@ def check_answer(question, list_answers):
     return option_user
 
 #Function to choose country
-def hotel_country(options_available):
+def hotel_country(menu, options_available):
+    print(menu)
     question = "What country do you want to stay in? (1-5): "
     option_country = check_answer(question, options_available)
     index = int(option_country) - 1
@@ -66,22 +66,27 @@ def hotel_city(country, options_available):
     list_cities = []
     options = options_available
     if country == "Spain":
+        print(spain_cities)
         list_cities = available_cities_spain
         options = options_available[0:3]
         lenght = 3
     elif country == "France":
+        print(france_cities)
         list_cities = available_cities_france
         options = options_available[0:2]
         lenght = 2
     elif country == "Portugal":
+        print(portugal_cities)
         list_cities = available_cities_portugal
         options = options_available[0:3]
         lenght = 3
     elif country == "Italy":
+        print(italy_cities)
         list_cities = available_cities_italy
         options = options_available[0:2]
         lenght = 2
     elif country == "Germany":
+        print(germany_cities)
         list_cities = available_cities_germany
         options = options_available[0:2]
         lenght = 2
@@ -267,7 +272,7 @@ def final_summary(country, city, date, list_user_data, list_type_rooms, list_roo
 
     ----------------------------------------------------------
 
-    Total Cost =    {count}
+    Total Cost =   $ {count}.00
 
     **********************************************************
     """
@@ -298,8 +303,7 @@ Remember that you only have three attempts
 """
 
 #Show available countries
-menu_countries ="""
-You can reserve rooms in the following countries:
+menu_countries ="""You can reserve rooms in the following countries:
 
 1- Spain
 2- France
@@ -345,6 +349,53 @@ You can book in the following cities in Germany:
 note = """
 * Note:
  - We can only reserve for this 2024. The date must be
-   entered with the following format: 01-09-24
-"""
+   entered with the following format: 01-09-24"""
 
+#Menu - type of rooms
+menu_rooms = """
+            Type of room   | Cost per room ($) 
+        ---------------------------------------
+            VIP Suites     |       450  
+           Single rooms    |       100 
+           Double rooms    |       200
+           Groups rooms    |       350   
+          Luxury suites    |       550         
+        ---------------------------------------"""
+
+#Main Function
+def main():
+    print(menu_entry)
+    login = login_attempts(3)
+    if login == True:
+        print("****************    Login Successfully   ********************")
+        reset_main_menu = True
+        while reset_main_menu == True:
+            print("\n**************************************************************\n")
+            country_reserve = hotel_country(menu_countries, available_options)
+            city_reserve = hotel_city(country_reserve, available_options)
+            print(note)
+            date_reserve = date_loop("\nChoose your reservation date: ")
+            print(menu_rooms)
+            initial_amount = [6, 3, 6, 6, 3]
+            rooms_reserve_f_list = hotel_rooms(available_rooms, initial_amount)            
+            print("\nPersonal Information\n")
+            list_user_data = user_data()
+            final_summary(country_reserve, city_reserve, date_reserve, list_user_data, available_rooms, rooms_reserve_f_list, initial_cost)
+            buy_reserve = check_answer("\nDo you want to reserve?(y/n): ", available_yes_no)
+            if buy_reserve in available_yes_no[0:3]:
+                message_custom("\nSuccessful reservation")
+                reset_main_menu = False
+            else:
+                exit_program = check_answer("\nDo you want to exit the program?(y/n): ", available_yes_no)
+                if exit_program in available_yes_no[0:3]:
+                    message_custom("")
+                    reset_main_menu = False
+                else:
+                    print("\nLet's start again..!!!!\n")
+                    reset_main_menu = True
+    else:
+        message_custom("Maximum number of attempts")
+
+#Entry point
+if __name__ == "__main__":
+    main()
