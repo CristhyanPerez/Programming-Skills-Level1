@@ -1,0 +1,28 @@
+Specialty	Doctor	Schedule 1	Schedule 2	Schedule 3	Schedule 4
+General Medicine	Dra. Ana Rivera	Monday 8:00-8:30 a.m	Wendnesday 10:00-10:30 a.m	Friday 16:00-16:30 p.m	Saturday 17:00-17:30 p.m
+General Medicine	Dr. Teodoro García	Tuesday 9:00-9:30 a.m	Tuesday 11:00-11:30 a.m	Monday 16:00-16:30 p.m	Thursday 16:00-16:30 p.m
+General Medicine	Dr. Juan López	Thursday 9:00-9:30 a.m	Friday 8:00-8:30 a.m	Tuesday 15:00-15:30 p.m	Wednesday 18:00-18:30 p.m
+Emergency Care	Dra. Sara Martínez	Monday 10:00-10:30 a.m	Tuesday 8:00-8:30 a.m	Thursday 13:00-13:30 p.m	Friday 13:00-13:30 p.m
+Emergency Care	Dra. Maura Chanco	Wednesday 8:00-8:30 a.m	Thursday 8:00-8:30 a.m	Tuesday 13:00-13:30 p.m	Saturday 14:00-14:30 p.m
+Emergency Care	Dr. Ángel Irureta	Friday 9:00-9:30 a.m	Saturday 8:00-8:30 a.m	Monday 14:00-14:30 p.m	Wednesday 13:00-13:30 p.m
+Clinical Analysis	Lic. Cinthia Villegas	Monday 9:00-9:30 a.m	Saturday 9:00-9:30 a.m	Tuesday 14:00-14:30 p.m	Wednesday 15:00-15:30 p.m
+Clinical Analysis	Lic. Sally Avellaneda	Tuesday 10:00-10:30 a.m	Wednesday 9:00-9:30 a.m	Monday 13:00-13:30 p.m	Saturday 13:00-13:30 p.m
+Clinical Analysis	Lic. Katty Ampuero	Thursday 11:00-11:30 a.m	Friday 11:00-11:30 a.m	Thursday 14:00-14:30 p.m	Friday 14:00-14:30p.m
+Cardiology	Dr. Juan De Dios	Monday 8:00-8:30 a.m	Wednesday 10:00-10:30 a.m	Friday 16:00-16:30 p.m	Saturday 17:00-17:30 p.m
+Cardiology	Dr. Fernando Pérez	Tuesday 9:00-9:30 a.m	Tuesday 11:00-11:30 a.m	Monday 16:00-16:30 p.m	Thursday 16:00-16:30 p.m
+Cardiology	Dra. Martha Santos	Thursday 9:00-9:30 a.m	Friday 8:00-8:30 a.m	Tuesday 15:00-15:30 p.m	Wednesday 18:00-18:30 p.m
+Neurology	Dr. Pedro Lozano	Monday 10:00-10:30 a.m	Tuesday 8:00-8:30 a.m	Thursday 13:00-13:30 p.m	Friday 13:00-13:30 p.m
+Neurology	Dr. Mauricio Mesones	Wednesday 8:00-8:30 a.m	Thursday 8:00-8:30 a.m	Tuesday 13:00-13:30 p.m	Saturday 14:00-14:30 p.m
+Neurology	Dra. Edison Flores	Friday 9:00-9:30 a.m	Saturday 8:00-8:30 a.m	Monday 14:00-14:30 p.m	Wednesday 13:00-13:30 p.m
+Nutrition	Dr. Franco Cabrera	Monday 9:00-9:30 a.m	Saturday 9:00-9:30 a.m	Tuesday 14:00-14:30 p.m	Wednesday 15:00-15:30 p.m
+Nutrition	Dr. Mario Llosa	Tuesday 10:00-10:30 a.m	Wednesday 9:00-9:30 a.m	Monday 13:00-13:30 p.m	Saturday 13:00-13:30 p.m
+Nutrition	Dra. Julieth Calvo	Thursday 11:00-11:30 a.m	Friday 11:00-11:30 a.m	Thursday 14:00-14:30 p.m	Friday 14:00-14:30 p.m
+Occupational Therapy	Lic. Ana Hurtado	Monday 7:00-7:30 a.m	Tuesday 7:00-7:30 a.m	Wednesday 14:00-14:30 p.m	Thursday 15:00-15:30 p.m
+Occupational Therapy	Lic. Shantall Vidal	Wednesday 11:00-11:30 a.m	Thursday 10:00-10:30 a.m	Monday 15:00-15:30 p.m	Saturday 15:00-15:30 p.m
+Occupational Therapy	Lic. Eva Nuñez	Friday 7:00-7:30 a.m	Saturday 10:00-10:30 a.m	Thursday 17:00-17:30 p.m	Friday 17:00-17:30 p.m
+Traumatology	Dr. Luis Chiroque	Monday 11:00-11:30 a.m	Wednesday 7:00-7:30 a.m	Thursday 18:00-18:30 p.m	Saturday 16:00-16:30 p.m
+Traumatology	Dra. Lucía Cruz	Thursday 7:00-7:30 a.m	Saturday 7:00-7:30 a.m	Monday 17:00-17:30 p.m	Tuesday 18:00-18:30 p.m
+Traumatology	Dr. Marco Montesinos	Friday 10:00-10:30 a.m	Saturday 11:00-11:30 a.m	Wednesday 16:00-16:30 p.m	Saturday 18:00-18:30 p.m
+Internal Medicine	Dr. Bruno De la Piedra	Monday 7:00-7:30 a.m	Tuesday 7:00-7:30 a.m	Wednesday 14:00-14:30 p.m	Thursday 15:00-15:30 p.m
+Internal Medicine	Dr. Joel Briseño	Wednesday 11:00-11:30 a.m	Thursday 10:00-10:30 a.m	Monday 15:00-15:30 p.m	Saturday 15:00-15:30 p.m
+Internal Medicine	Dra. Krina Rivera	Friday 7:00-7:30 a.m	Saturday 10:00-10:30 a.m	Tuesday 17:00-17:30 p.m	Friday 17:00-17:30 p.m
