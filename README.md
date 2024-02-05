@@ -32,7 +32,7 @@ This repository is the second one of a series of entry-level exercises that can 
       <li>The system should also allow returning to the main menu.</li>
     </ul>
   <p align="center">
-    <img src="">
+    <img src="https://github.com/CristhyanPerez/Programming-Skills-Level1/assets/93043890/c8495ae7-a995-4446-9cb0-9ba02912737f">
   </p>
 </section>
 
@@ -61,7 +61,7 @@ This repository is the second one of a series of entry-level exercises that can 
         Clue: You could consider the user's budget.
     </p>
   <p align="center">
-    <img src="">
+    <img src="https://github.com/CristhyanPerez/Programming-Skills-Level1/assets/93043890/ec99f325-0800-46bb-a206-659b5dde7fac">
   </p>
 </section>
 
@@ -82,7 +82,7 @@ This repository is the second one of a series of entry-level exercises that can 
       <li>The basic process is: Login -> Choose specialty -> Choose doctor -> Choose time slot.</li>
     </ul>
   <p align="center">
-    <img src="">
+    <img src="https://github.com/CristhyanPerez/Programming-Skills-Level1/assets/93043890/657b0e47-8384-4da6-adb8-d897d8b88e1b">
   </p>
 </section>
 
@@ -101,7 +101,7 @@ This repository is the second one of a series of entry-level exercises that can 
       <li>The algorithm functions as follows: Login, choose country, choose city, choose room type, select the number of nights, collect user data (name, surname, ID/passport), print the total cost, and if the user agrees, print a confirmation message for the reservation. If not, return to the main menu.</li>
     </ul>
   <p align="center">
-    <img src="">
+    <img src="https://github.com/CristhyanPerez/Programming-Skills-Level1/assets/93043890/e497ffd5-c185-4a19-8f7a-ab5a87efb4ef">
   </p>
 </section>
 
@@ -125,7 +125,7 @@ This repository is the second one of a series of entry-level exercises that can 
       <li>The system will provide the option to confirm the reservation or cancel it. If the user chooses YES, a confirmation message will appear. If not, it will return to the main menu.</li>
     </ul>
   <p align="center">
-    <img src="">
+    <img src="https://github.com/CristhyanPerez/Programming-Skills-Level1/assets/93043890/a58e4c5c-a15b-4611-9026-dd1c26d28855">
   </p>
 </section>
 
