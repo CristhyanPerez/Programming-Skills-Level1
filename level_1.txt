@@ -34,9 +34,7 @@ Design a system that helps users choose their best destination according to thei
 Clue: You could consider the user's budget
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-3. 
-
-The Valencia Hospital is developing an application to manage appointments. Design an algorithm for this application with the following features:
+3. The Valencia Hospital is developing an application to manage appointments. Design an algorithm for this application with the following features:
 
 It must have a login and validate the data; after the third failed attempt, it should be locked.
 The user can schedule an appointment for: General Medicine, Emergency Care, Clinical Analysis, Cardiology, Neurology, Nutrition, Physiotherapy, Traumatology, and Internal Medicine.
