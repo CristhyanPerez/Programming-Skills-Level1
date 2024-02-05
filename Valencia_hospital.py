@@ -78,17 +78,24 @@ def doctor_user(dataframe, specialty_choose):
     return doctor_final
 
 #Function to show available schedules
-def schedule_user(dataframe, doctor_choose):
+def schedule_user(dataframe, doctor_choose, general_list):
+    schedule_list_start = general_list[2::3]
     print("\nAvailable times:\n")
     index_data = dataframe[dataframe['Doctor'] == doctor_choose].index[0]
     selected_row = dataframe.iloc[index_data]
     list_row = selected_row.tolist()
     list_schedules = list_row[2:6]
-    list_options_03 = ["1", "2", "3", "4"]
-    lenght_list = 4
+    #Remove equal schedules from the list
+    for w in schedule_list_start:
+        for z in list_schedules:
+            if w == z:
+                list_schedules.remove(w)
+    lenght_list = len(list_schedules)
+    list_options_03 = []
     for i in range(1, lenght_list + 1):
         print(f"{i}- { list_schedules[i-1]}")
-    print()
+        option = str(i)
+        list_options_03.append(option)
     question = f"\nChose the schedule (1 - {lenght_list}): "
     option_choose = check_answer(question, list_options_03)
     index = int(option_choose) - 1
@@ -173,7 +180,7 @@ def main():
             df = transform_dataset("specialties.csv")
             specialty_user_app = specialty_user(number_start, available_specialties)
             doctor_user_app = doctor_user(df, specialty_user_app)
-            schedule_user_app = schedule_user(df, doctor_user_app)
+            schedule_user_app = schedule_user(df, doctor_user_app, list_user_final)
             reserve_appointment = check_answer("\nDo you want to book this appointment?(y/n): ", available_yes_no)
             if reserve_appointment in available_yes_no[0:3]:
                 print(f"\n****************  Succesful reservation #{number_appointments}  ****************** \n")
